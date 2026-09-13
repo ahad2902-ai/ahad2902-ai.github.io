@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI — Abdul Ahad Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232F6FED'/%3E%3Ctext x='50' y='68' font-family='Arial, sans-serif' font-size='48' font-weight='700' fill='white' text-anchor='middle'%3EAI%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#120303;
+    --bg-soft:#1B0707;
+    --card:#210A0A;
+    --line:rgba(255,255,255,0.08);
+    --red:#2F6FED;
+    --red-dim:rgba(47,111,237,0.16);
+    --text:#F3EDEA;
+    --text-soft:#B8A9A6;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:radial-gradient(120% 90% at 85% 0%, #0A1A30 0%, var(--bg) 55%);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+  }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 32px; }
+
+  /* nav */
+  header.top{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 32px; max-width:1080px; margin:0 auto;
+  }
+  header.top .mark{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.05rem; }
+  header.top nav{ display:flex; gap:30px; }
+  header.top nav a{ font-size:0.9rem; color:var(--text-soft); }
+  header.top nav a:hover{ color:var(--text); }
+  header.top .cta{
+    background:var(--red); color:#fff; padding:9px 20px; border-radius:6px; font-size:0.88rem; font-weight:500;
+  }
+  header.top .cta:hover{ background:#1E52B8; }
+
+  /* hero */
+  .hero{
+    padding:70px 0 90px;
+    display:grid; grid-template-columns: 1.5fr 0.7fr; gap:40px; align-items:center;
+    position:relative;
+  }
+  .hero .hi{ font-size:0.95rem; color:var(--red); font-weight:500; margin-bottom:14px; }
+  .hero h1{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:clamp(2.4rem,5vw,3.6rem);
+    line-height:1.08;
+  }
+  .hero h1 .accent{ color:var(--red); }
+  .hero .role{ margin-top:16px; font-size:1.05rem; color:var(--text-soft); font-weight:500; }
+  .hero p.desc{ margin-top:18px; max-width:46ch; color:var(--text-soft); font-size:0.98rem; }
+  .hero .btns{ display:flex; gap:14px; margin-top:32px; }
+  .hero .btns a{ padding:12px 26px; border-radius:6px; font-size:0.92rem; font-weight:500; }
+  .hero .btns .primary{ background:var(--red); color:#fff; }
+  .hero .btns .primary:hover{ background:#1E52B8; }
+  .hero .btns .ghost{ border:1px solid var(--line); color:var(--text); }
+  .hero .btns .ghost:hover{ border-color:var(--red); }
+  .hero .socials{ display:flex; gap:12px; margin-top:38px; }
+  .hero .socials a{
+    width:38px; height:38px; border:1px solid var(--line); border-radius:8px;
+    display:flex; align-items:center; justify-content:center; font-size:0.85rem; color:var(--text-soft);
+  }
+  .hero .socials a:hover{ border-color:var(--red); color:var(--red); }
+
+  /* photo panel */
+  .photo-panel{
+    position:relative; aspect-ratio:4/5; border-radius:14px; overflow:hidden;
+    background:linear-gradient(160deg,#2A0A10,#160404);
+    border:1px solid var(--line);
+    display:flex; align-items:flex-end; justify-content:center;
+  }
+  .photo-panel img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+
+  /* sections */
+  section{ padding:64px 0; border-top:1px solid var(--line); }
+  h2.sec{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.5rem; margin-bottom:10px; }
+  p.sec-note{ color:var(--text-soft); font-size:0.95rem; max-width:56ch; margin-bottom:36px; }
+
+  /* about */
+  .about-grid{ display:grid; grid-template-columns:1fr 1.3fr; gap:40px; }
+  .about-grid p{ color:var(--text-soft); margin-bottom:14px; font-size:0.97rem; }
+  .stat-row{ display:flex; gap:30px; flex-wrap:wrap; }
+  .stat b{ font-family:'Space Grotesk', sans-serif; font-size:1.7rem; display:block; color:var(--red); }
+  .stat span{ font-size:0.82rem; color:var(--text-soft); }
+
+  /* skills */
+  .skill-groups{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  .skill-card{ background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px; }
+  .skill-card h4{ font-family:'Space Grotesk', sans-serif; font-size:0.92rem; margin-bottom:12px; }
+  .skill-card ul{ list-style:none; color:var(--text-soft); font-size:0.9rem; }
+  .skill-card li{ padding:4px 0; }
+
+  /* projects */
+  .project{
+    background:var(--card); border:1px solid var(--line); border-radius:12px; padding:26px;
+    margin-bottom:18px; display:grid; grid-template-columns:1fr 2fr; gap:22px;
+  }
+  .project .meta{ font-size:0.78rem; color:var(--red); font-weight:600; }
+  .project h3{ font-family:'Space Grotesk', sans-serif; font-size:1.15rem; margin-bottom:8px; }
+  .project p{ color:var(--text-soft); font-size:0.93rem; margin-bottom:12px; }
+  .project .stack{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .project .stack span{ font-size:0.72rem; background:var(--red-dim); color:#8FB4F5; padding:3px 9px; border-radius:4px; }
+  .project .plinks a{ font-size:0.86rem; text-decoration:underline; text-underline-offset:3px; margin-right:16px; color:var(--text); }
+
+  /* contact */
+  footer{ padding:64px 0 40px; }
+  footer .links{ display:flex; gap:14px; flex-wrap:wrap; margin-top:24px; }
+  footer .links a{ border:1px solid var(--line); padding:10px 20px; border-radius:6px; font-size:0.9rem; }
+  footer .links a:hover{ border-color:var(--red); color:var(--red); }
+  footer .copyright{ margin-top:50px; font-size:0.78rem; color:var(--text-soft); }
+
+  @media (max-width:760px){
+    .hero, .about-grid, .project{ grid-template-columns:1fr; }
+    .skill-groups{ grid-template-columns:1fr 1fr; }
+    header.top nav{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="mark">Abdul Ahad</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="cta" href="#contact">Let's Work Together</a>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <div>
+      <div class="hi">HI, I'M</div>
+      <h1>Abdul Ahad<br><span class="accent">AI Student</span></h1>
+      <div class="role">BS in Artificial Intelligence · Machine Learning</div>
+      <p class="desc">
+        I'm Abdul Ahad, an AI student passionate about building practical machine learning
+        projects — from computer vision to NLP — and turning what I learn into things people
+        can actually use.
+      </p>
+      <div class="btns">
+        <a class="primary" href="#certifications">View My Work</a>
+        <a class="ghost" href="#contact">Contact Me</a>
+      </div>
+      <div class="socials">
+        <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn">in</a>
+        <a href="mailto:ahad2902@gmail.com" title="Email">@</a>
+        <a href="https://github.com/yourusername" target="_blank" title="GitHub">GH</a>
+      </div>
+    </div>
+
+    <div class="photo-panel">
+      <img src="photo.jpg" alt="Abdul Ahad">
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="sec">About</h2>
+    <div class="about-grid">
+      <div class="stat-row" style="flex-direction:column; gap:22px;">
+        <div class="stat"><b>2025</b><span>Started learning AI/ML</span></div>
+        <div class="stat"><b>Artificial Intelligence</b><span>Currently studying</span></div>
+        <div class="stat"><b>2</b><span>Projects shipped</span></div>
+      </div>
+      <div>
+        <p>
+          Replace this with two or three sentences about what drew you to AI, what you've
+          studied (courses, bootcamp, self-taught), and the kinds of problems you enjoy —
+          computer vision, NLP, robotics, applied ML, etc.
+        </p>
+        <p>
+          Second paragraph: what you're focused on right now, the tools/frameworks you use
+          daily, and where you're headed — research, ML engineering, or a specific
+          application area.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="sec">Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h4>Languages</h4>
+        <ul><li>Python</li><li>SQL</li><li>[...]</li></ul>
+      </div>
+      <div class="skill-card">
+        <h4>ML / AI</h4>
+        <ul><li>PyTorch / TensorFlow</li><li>Scikit-learn</li><li>Hugging Face</li></ul>
+      </div>
+      <div class="skill-card">
+        <h4>Tools</h4>
+        <ul><li>Git / GitHub</li><li>Jupyter</li><li>[Cloud / Docker / etc.]</li></ul>
+      </div>
+      <div class="skill-card">
+        <h4>Specialties</h4>
+        <ul><li>AI Chatbots</li><li>Website Designer</li><li>Shopify Design</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2 class="sec">Certifications</h2>
+    <div class="project" style="grid-template-columns:1fr 1.3fr; align-items:start;">
+      <img src="certificate.jpg" alt="Google AI Professional Certificate" style="width:100%; border-radius:8px; border:1px solid var(--line);">
+      <div>
+        <div class="meta">MAY 2026 — COURSERA</div>
+        <h3>Google AI Professional Certificate</h3>
+        <p>Completed 7 courses covering AI Fundamentals, Brainstorming &amp; Planning, Research &amp; Insights,
+          Writing &amp; Communicating, Content Creation, Data Analysis, and App Building. Built a portfolio
+          of 20+ AI artifacts and developed a custom AI solution.</p>
+        <div class="stack"><span>AI Fundamentals</span><span>Data Analysis</span><span>App Building</span></div>
+        <div class="plinks">
+          <a href="https://coursera.org/verify/professional-cert/FMOWYU89QMGA" target="_blank">Verify certificate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2 class="sec">Get in touch</h2>
+    <p class="sec-note">Open to internships, collaborations, and interesting problems.</p>
+    <div class="links">
+      <a href="mailto:ahad2902@gmail.com">ahad2902@gmail.com</a>
+      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+      <a href="#">Resume (PDF)</a>
+    </div>
+    <div class="copyright">© 2025 Abdul Ahad</div>
+  </footer>
+
+</div>
+</body>
+</html>
